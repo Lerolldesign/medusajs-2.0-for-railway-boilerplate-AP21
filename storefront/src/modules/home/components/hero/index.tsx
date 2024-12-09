@@ -1,5 +1,4 @@
-import { Github } from "@medusajs/icons"
-import { Button, Heading } from "@medusajs/ui"
+import { Heading } from "@medusajs/ui"
 
 const Hero = () => {
   return (
@@ -10,13 +9,17 @@ const Hero = () => {
             level="h1"
             className="text-3xl leading-10 text-ui-fg-base font-normal"
           >
-            Je suis leroll design!
+                   Je suis leroll design 
+            <span className="text-lune font-lune font-bold uppercase">
+              hello leroll de ouf.ooop
+            </span>
           </Heading>
+
           <Heading
             level="h2"
             className="text-3xl leading-10 text-ui-fg-subtle font-normal"
           >
-            Need help customizing your store?
+            Need help customizing your store? uuuuu
           </Heading>
         </span>
         <a
