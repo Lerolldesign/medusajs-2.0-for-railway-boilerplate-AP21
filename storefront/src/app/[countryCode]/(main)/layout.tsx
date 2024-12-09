@@ -1,8 +1,11 @@
 import { Metadata } from "next"
 
-import Footer from "@modules/layout/templates/footer"
-import Nav from "@modules/layout/templates/nav"
 import { getBaseURL } from "@lib/util/env"
+import Tidio from "@modules/elements/tidio"
+import FooterLune from "@modules/layout/templates/footerLune"
+//import Nav from "@modules/layout/templates/nav"
+import HeaderNew from "@modules/layout/templates/headernew"
+import Ornements from "@modules/layout/templates/ornements"
 
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
@@ -11,9 +14,11 @@ export const metadata: Metadata = {
 export default async function PageLayout(props: { children: React.ReactNode }) {
   return (
     <>
-      <Nav />
+      <Ornements />
+      <HeaderNew />
       {props.children}
-      <Footer />
+      <FooterLune />
+      <Tidio />
     </>
   )
 }
