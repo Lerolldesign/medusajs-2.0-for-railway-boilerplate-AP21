@@ -16,7 +16,7 @@ export default function AtelierDecoration() {
 
         <div className="w-full xl:w-1/3 flex flex-col md:items-center md:justify-center">
           <h2 className="text-lune font-lune text-[2.35rem] leading-[2.7rem] xl:text-[5.5rem] xl:leading-[6rem] 2xl:text-[8rem] 2xl:leading-[8.5rem] py-20  md:text-center Z-10 relative">
-            La décoration est au cœur de mon métier.
+            La décoration est au cœur de mon métier
           </h2>
           <p
             className="w-[80vw] xl:w-[35vw] 2xl:w-[25vw] md:text-center leading-6 2xl:leading-7 

@@ -20,7 +20,8 @@
   },
   "resolutions": {
     "webpack": "^5",
-    "@types/react": "17.0.40"
+    "@types/react": "17.0.40",
+    "vite": "^5.2.11"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.1",
@@ -41,6 +42,7 @@
     "@studio-freight/hamo": "^0.6.33",
     "@studio-freight/lenis": "^1.0.42",
     "@studio-freight/react-lenis": "^0.0.47",
+    "@vitejs/plugin-react": "^4.3.4",
     "add": "^2.0.6",
     "algoliasearch": "^4.20.0",
     "axios": "^1.6.7",
