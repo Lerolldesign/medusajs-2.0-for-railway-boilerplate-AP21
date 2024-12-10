@@ -1,4 +1,4 @@
-import { Carousel } from "@/components/ui/carousel"
+import CarouselProject from "@modules/pages/enjoliver/carouselProjet"
 import HeroEnjoliver from "@modules/pages/enjoliver/heroEnjoliver"
 import IntroEnjoliver from "@modules/pages/enjoliver/introEnjoliver"
 import SecondEnjoliver from "@modules/pages/enjoliver/secondEnjoliver"
@@ -11,7 +11,7 @@ export default function Enjoliver() {
       <IntroEnjoliver />
       <SecondEnjoliver />
       <ThirdEnjoliver />
-      <Carousel />
+      <CarouselProject />
 
       {/** <DraggableProjects />
       <ScrollSection />  <Carousel />*/}

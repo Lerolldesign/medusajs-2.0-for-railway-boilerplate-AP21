@@ -1,16 +1,16 @@
 /* eslint-disable @next/next/no-async-client-component */
 "use client"
-import Button from "@modules/elements/button"
-
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel" // Assurez-vous que ce chemin est correct
+} from "@/components/ui/carousel"
+import Button from "@modules/elements/button"
 import Image from "next/image"
 import Link from "next/link"
+import { useEffect, useState } from "react"
 import { client } from "../../../lib/sanity/client"
 import { urlForImage } from "../../../lib/sanity/image"
 import { Galerie } from "../../../lib/util/interface"
@@ -38,8 +38,25 @@ async function getGaleries() {
 
 export const revalidate = 60
 
-export default async function CarouselProject() {
-  const galeries: Galerie[] = await getGaleries()
+// Utiliser useState et useEffect pour charger les données
+export default function CarouselProject() {
+  const [galeries, setGaleries] = useState<Galerie[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchGaleries = async () => {
+      const data = await getGaleries()
+      setGaleries(data)
+      setLoading(false)
+    }
+
+    fetchGaleries()
+  }, [])
+
+  // Afficher un indicateur de chargement si les données ne sont pas encore disponibles
+  if (loading) {
+    return <div>Chargement...</div>
+  }
 
   return (
     <div className="p-10">
