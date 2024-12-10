@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function Illuminervotreinterieur() {
   return (
-    <div>
+    <div className="overflow-x-hidden h-auto">
       <HeroIlluminer />
       <IntroIlluminer />
       <ImageList />
