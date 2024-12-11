@@ -44,7 +44,7 @@ const CartDropdown = ({
 
   const openAndCancel = () => {
     if (activeTimer) {
-      clearTimeout(activeTimer)
+      clearTimeout(Number(activeTimer))
     }
 
     open()
@@ -54,7 +54,7 @@ const CartDropdown = ({
   useEffect(() => {
     return () => {
       if (activeTimer) {
-        clearTimeout(activeTimer)
+        clearTimeout(Number(activeTimer))
       }
     }
   }, [activeTimer])
