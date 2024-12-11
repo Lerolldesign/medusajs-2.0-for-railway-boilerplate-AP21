@@ -1,7 +1,6 @@
 "use client"
-
 import { useRef, useState } from "react"
-import { sendEmail } from "../../lib/actions"
+import { sendEmail } from "../../lib/actions" // Correction du chemin relatif
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)

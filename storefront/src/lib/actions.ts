@@ -45,9 +45,9 @@ export async function sendConfirmation(formData: FormData) {
     // Utiliser Resend pour envoyer l'email
     const { data } = await resend.emails.send({
       from: "confirmation@atelier.lalunecurieuse.com",
-      to: ["commande@lalunecurieuse.com, lerolldesign@gmail.com"], // Vous pouvez aussi envoyer à d'autres destinataires si nécessaire
+      to: ["commande@lalunecurieuse.com", "lerolldesign@gmail.com"], // Vous pouvez aussi envoyer à d'autres destinataires si nécessaire
       subject: "Félicitation 🍻",
-      html: render(KoalaWelcomeEmail({ userFirstname })),
+      html: await render(KoalaWelcomeEmail({ userFirstname })),
     })
 
     return { success: true, message: "Email envoyé avec succès!" }
