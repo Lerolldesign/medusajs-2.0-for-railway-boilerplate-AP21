@@ -1,9 +1,8 @@
 "use client"
-import { gsap } from "gsap"
-import { useEffect, useRef } from "react"
 import { useWindowSize } from "@studio-freight/hamo"
+import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { ReactNode } from "react"
+import { ReactNode, useEffect, useRef } from "react"
 
 interface WindowSize {
   width: number
@@ -24,7 +23,7 @@ export function Parallax({
 }: ParallaxProps) {
   const trigger = useRef<HTMLDivElement>(null)
   const target = useRef<HTMLDivElement>(null)
-  const timeline = useRef<gsap.core.Timeline>()
+  const timeline = useRef<gsap.core.Timeline>(gsap.timeline())
   const { width: windowWidth } = useWindowSize() as WindowSize
 
   useEffect(() => {
