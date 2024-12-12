@@ -148,15 +148,18 @@ export default function ProductActions({
           onClick={handleAddToCart}
           disabled={!inStock || !selectedVariant || !!disabled || isAdding}
           variant="primary"
-          className="w-full h-10"
+          className={`rounded-full px-6 py-4 noise font-bold text-[.95rem] transition-all duration-400 
+            ${!inStock ? "!bg-lune !text-white" : "bg-[#121212] text-creamy"} 
+            hover:translate-y-[8px] hover:text-creamy hover:rounded-full hover:bg-lune active:translate-x-[0px] 
+            active:translate-y-[0px]`}
           isLoading={isAdding}
           data-testid="add-product-button"
         >
           {!selectedVariant
-            ? "Select variant"
+            ? "Selectionner votre produit"
             : !inStock
-            ? "Out of stock"
-            : "Add to cart"}
+            ? "Réédition ou sur mesure"
+            : "Ajouter au panier"}
         </Button>
         <MobileActions
           product={product}

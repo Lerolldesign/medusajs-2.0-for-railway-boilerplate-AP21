@@ -1,11 +1,11 @@
 import { Text } from "@medusajs/ui"
 
+import { getProductsById } from "@lib/data/products"
 import { getProductPrice } from "@lib/util/get-product-price"
+import { HttpTypes } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Thumbnail from "../thumbnail"
 import PreviewPrice from "./price"
-import { getProductsById } from "@lib/data/products"
-import { HttpTypes } from "@medusajs/types"
 
 export default async function ProductPreview({
   product,
@@ -37,6 +37,7 @@ export default async function ProductPreview({
           images={product.images}
           size="full"
           isFeatured={isFeatured}
+          className="md:h-[50vh] xl:h-[60vh] 2xl:h-[65vh] rounded-full hover:scale-105 transition-all duration-500 cursor-pointer"
         />
         <div className="flex txt-compact-medium mt-4 justify-between">
           <Text className="text-ui-fg-subtle" data-testid="product-title">
