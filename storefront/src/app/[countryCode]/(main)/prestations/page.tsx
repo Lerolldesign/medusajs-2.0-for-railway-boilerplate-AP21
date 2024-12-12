@@ -1,6 +1,13 @@
 import Button from "@modules/elements/button"
+import { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+
+export const metadata: Metadata = {
+  title: "Prestations | La Lune Curieuse",
+  description:
+    "Ensemble des prestations réalisées par l'atelier la Lune Curieuse",
+}
 
 export default function page() {
   return (
@@ -26,7 +33,7 @@ export default function page() {
               contrecollé
             </p>
 
-            <Button href="/services/enjoliver-vos-espaces" variant="primary">
+            <Button href="/prestations/enjoliver-vos-espaces" variant="primary">
               Découvrir +
             </Button>
           </div>
@@ -50,7 +57,7 @@ export default function page() {
             <p className="text-white text-center w-full lg:w-[15vw] text-xs pb-5">
               Réalisation sur-mesure de rideaux, voilage, coussins,…
             </p>
-            <Button href="/services/enjoliver-vos-espaces" variant="primary">
+            <Button href="/prestations/enjoliver-vos-espaces" variant="primary">
               Découvrir +
             </Button>
           </div>
@@ -75,7 +82,10 @@ export default function page() {
               tabourets, banquettes,…
             </p>
 
-            <Button href="/services/enjoliver-vos-espaces" variant="primary">
+            <Button
+              href="/prestaqtions/enjoliver-vos-espaces"
+              variant="primary"
+            >
               Découvrir +
             </Button>
           </div>
