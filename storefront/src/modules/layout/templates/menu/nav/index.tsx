@@ -20,10 +20,6 @@ const navItems = [
     title: "Réalisations",
     href: "/projets",
   },
-  {
-    title: "Boutique",
-    href: "/boutique",
-  },
 ]
 
 export default function Index() {

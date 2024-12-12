@@ -6,6 +6,7 @@ import FooterLune from "@modules/layout/templates/footerLune"
 //import Nav from "@modules/layout/templates/nav"
 import HeaderNew from "@modules/layout/templates/headernew"
 import Ornements from "@modules/layout/templates/ornements"
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google"
 
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
 export default async function PageLayout(props: { children: React.ReactNode }) {
   return (
     <>
+      <GoogleTagManager gtmId="GTM-N46KK3DR" />
+      <GoogleAnalytics gaId="G-FCCXBCQNZZ" />
       <Ornements />
       <HeaderNew />
       {props.children}
