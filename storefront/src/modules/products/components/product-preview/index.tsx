@@ -40,7 +40,10 @@ export default async function ProductPreview({
           className="md:h-[50vh] xl:h-[60vh] 2xl:h-[65vh] rounded-full hover:scale-105 transition-all duration-500 cursor-pointer"
         />
         <div className="flex txt-compact-medium mt-4 justify-between">
-          <Text className="text-ui-fg-subtle" data-testid="product-title">
+          <Text
+            className="text-lg font-[500] md:font-normal md:text-2xl lg:text-4xl  font-lune text-lune hover:text-neutral-700 hover:translate-y-1 duration-200 ease-in-out transition-all"
+            data-testid="product-title"
+          >
             {product.title}
           </Text>
           <div className="flex items-center gap-x-2">
