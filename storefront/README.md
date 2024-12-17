@@ -319,5 +319,6 @@ The middleware also sets a cookie based on the onboarding status of a user. This
   test de modification
 
 npm i react-is@18 --legacy-peer-deps
+npm i react-dom --legacy-peer-deps
 npm create sanity@latest -- --project p2ipv59c --dataset production --template clean --typescript --output-path studio-la-lune-curieuse-shop
 npm create sanity@latest -- --project p2ipv59c --dataset production --template clean

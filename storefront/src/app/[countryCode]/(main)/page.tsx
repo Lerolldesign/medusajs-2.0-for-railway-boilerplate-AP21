@@ -11,21 +11,17 @@ import HomeSectionIntroText from "@modules/home/components/sections/introText"
 import HomeSectionRestaurer from "@modules/home/components/sections/restaurer"
 
 export const metadata: Metadata = {
-  title: "Medusa Next.js Starter Template",
+  title: "Tapisserie d’ameublement ▪ couture & décors",
   description:
-    "A performant frontend ecommerce starter template with Next.js 14 and Medusa.",
+    "Atelier artisanal de tapisserie d’ameublement. Création de décorations textiles sur mesure et restauration de sièges. Dijon, Gray, Langres",
 }
 
-export default async function Home(
-  props: {
-    params: Promise<{ countryCode: string }>
-  }
-) {
-  const params = await props.params;
+export default async function Home(props: {
+  params: Promise<{ countryCode: string }>
+}) {
+  const params = await props.params
 
-  const {
-    countryCode
-  } = params;
+  const { countryCode } = params
 
   const collections = await getCollectionsWithProducts(countryCode)
   const region = await getRegion(countryCode)
