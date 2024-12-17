@@ -1,9 +1,9 @@
-import "../../../../styles/globals.css";
+import "../../../../styles/globals.css"
 
 export default function SanityLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <div className="w-full bg-white/50 noise relative small:min-h-screen">
@@ -11,5 +11,5 @@ export default function SanityLayout({
       <span className="w-full text-xs mx-10">{"//// Leroll Design App"}</span>
       <div className="relative">{children}</div>
     </div>
-  );
+  )
 }
