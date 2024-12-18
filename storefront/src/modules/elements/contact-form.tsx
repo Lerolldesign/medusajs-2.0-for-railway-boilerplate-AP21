@@ -78,20 +78,22 @@ export default function ContactForm() {
             Prestations
           </span>
           <div className="flex space-x-4">
-            {["tapisserie", "tissus", "restauration"].map((service) => (
-              <label key={service} className="inline-flex items-center">
-                <input
-                  type="radio"
-                  name="service"
-                  value={service}
-                  className="form-radio h-4 w-4 text-lune"
-                  defaultChecked={service === "tapisserie"}
-                />
-                <span className="ml-2 text-sm text-gray-700 capitalize">
-                  {service}
-                </span>
-              </label>
-            ))}
+            {["abat-jour", "décors textile", "siège", "autre"].map(
+              (service) => (
+                <label key={service} className="inline-flex items-center">
+                  <input
+                    type="radio"
+                    name="service"
+                    value={service}
+                    className="form-radio h-4 w-4 text-lune"
+                    defaultChecked={service === "abat-jour"}
+                  />
+                  <span className="ml-2 text-sm text-gray-700 capitalize">
+                    {service}
+                  </span>
+                </label>
+              )
+            )}
           </div>
         </div>
         <div>
@@ -131,7 +133,7 @@ export default function ContactForm() {
                   (acc, file) => acc + file.size,
                   0
                 )
-                if (totalSize > 40 * 1024 * 1024) {
+                if (totalSize > 10 * 1024 * 1024) {
                   alert(
                     "La taille totale des fichiers ne doit pas dépasser 10 MB"
                   )
@@ -168,9 +170,9 @@ export default function ContactForm() {
       </form>
       {message && (
         <div
-          className={`mt-4 p-2 rounded ${
+          className={`mt-6 p-4 z-40! rounded-xl text-center ${
             message.includes("succès")
-              ? "bg-green-100 text-lune"
+              ? "bg-creamy text-lune"
               : "bg-red-100 text-red-800"
           }`}
         >

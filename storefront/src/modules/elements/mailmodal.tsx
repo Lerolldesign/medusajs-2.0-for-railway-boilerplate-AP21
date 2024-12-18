@@ -14,7 +14,7 @@ import ContactForm from "./contact-form"
 export const DragCloseMail = () => {
   const [open, setOpen] = useState(false)
   return (
-    <div className="fixed right-10 bottom-24 md:right-32 md:bottom-60 z-50 ">
+    <div className="fixed right-10 bottom-24 md:right-32 md:bottom-60 z-40 ">
       <div
         onClick={() => setOpen(true)}
         id="contact_btn"
