@@ -47,6 +47,11 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "bucket-production-b812.up.railway.app",
+      },
+
+      {
+        protocol: "https",
         hostname: "medusa-server-testing.s3.us-east-1.amazonaws.com",
       },
       ...(process.env.NEXT_PUBLIC_MINIO_ENDPOINT

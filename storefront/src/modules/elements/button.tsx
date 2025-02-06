@@ -29,7 +29,8 @@ const Button: React.FC<ButtonProps> = ({
       spanClass += " text-creamy bg-lune/5 hover:bg-lune ring-lune"
     } else if (variant === "tertery") {
       baseClass += " border-lune"
-      spanClass += " text-lune bg-lune/5 hover:bg-lune ring-lune"
+      spanClass +=
+        " text-lune bg-lune/5 hover:bg-creamy hover:text-lune ring-lune"
     }
 
     return { baseClass, spanClass }
