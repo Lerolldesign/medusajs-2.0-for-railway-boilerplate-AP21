@@ -49,7 +49,8 @@ export default function CategoryTemplate({
                 /
               </span>
             ))}
-          {/**        <h1 data-testid="category-page-title">{category.name}</h1> */}
+
+          {/**       <h1 data-testid="category-page-title">{category.name}</h1>*/}
         </div>
 
         <div className="mb-8 flex flex-col items-center justify-center ">
@@ -73,12 +74,12 @@ export default function CategoryTemplate({
             </div>
           )}
         </div>
-
-        {category.description && (
+        {/**   {category.description && (
           <div className="mb-8 text-base-regular">
             <p>{category.description}</p>
           </div>
-        )}
+        )} */}
+
         {category.category_children && (
           <div className="mb-8 text-base-large">
             <ul className="grid grid-cols-1 gap-2">

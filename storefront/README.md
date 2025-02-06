@@ -325,4 +325,4 @@ npm i react-dom --legacy-peer-deps
 npm create sanity@latest -- --project p2ipv59c --dataset production --template clean --typescript --output-path studio-la-lune-curieuse-shop
 npm create sanity@latest -- --project p2ipv59c --dataset production --template clean
 
-conflit
+conflit ok 18 dec
