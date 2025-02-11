@@ -29,6 +29,7 @@ Combine Medusa's modules for your commerce backend with the newest Next.js 14 fe
 </p>
 
 ## About this boilerplate
+
 This boilerplate is a monorepo consisting of the officially released MedusaJS 2.0 backend and storefront application. It is a pre-configured, ready-to-deploy solution, modified for seamless deployment on [railway.app](https://railway.app?referralCode=-Yg50p).
 
 Updated: to `version 2.0.4` 🥳
@@ -42,20 +43,23 @@ Updated: to `version 2.0.4` 🥳
 # /backend
 
 ### local setup
+
 Video instructions: https://youtu.be/PPxenu7IjGM
 
 - Install dependencies using either:
   - `npm i`
   - `pnpm install` (now supported!)
-- Rename `.env.template` ->  `.env`
+- Rename `.env.template` -> `.env`
 - To connect to your online database from your local machine, copy the `DATABASE_URL` value auto-generated on Railway and add it to your `.env` file.
 
 ### requirements
+
 - **postgres database** (Automatic setup when using the Railway template)
 - **redis** (Automatic setup when using the Railway template) - fallback to simulated redis.
 - **MinIO storage** (Automatic setup when using the Railway template) - fallback to local storage.
 
 ### commands
+
 `cd backend/`
 `npm run ib` or `pnpm ib` will initialize the backend by running migrations and seed the database with required system data.
 `npm run dev` or `pnpm dev` will start the backend (and admin dashboard frontend on `localhost:9000/app`) in development mode.
@@ -64,22 +68,26 @@ Video instructions: https://youtu.be/PPxenu7IjGM
 # /storefront
 
 ### local setup
+
 Video instructions: https://youtu.be/PPxenu7IjGM
 
 Install dependencies `npm i`
-Rename `.env.local.template` ->  `.env.local`
+Rename `.env.local.template` -> `.env.local`
 
 ### requirements
+
 - A running backend on port 9000 is required to fetch product data and other information needed to build Next.js pages.
 
 ### commands
+
 `cd storefront/`
 `npm run dev` will run the storefront on uncompiled code, with hot-reloading as files are saved with changes.
 
 ## Useful resources
+
 - How to setup credit card payment with Stripe payment module: https://youtu.be/dcSOpIzc1Og
 - https://funkyton.com/medusajs-2-0-is-finally-here/#succuessfully-deployed-whats-next
-  
+
 <p align="center">
   <a href="https://funkyton.com/">
     <div style="text-align: center;">
@@ -91,3 +99,5 @@ Rename `.env.local.template` ->  `.env.local`
     </div>
   </a>
 </p>
+
+https://github.com/rpuls/medusajs-2.0-for-railway-boilerplate/tree/master
