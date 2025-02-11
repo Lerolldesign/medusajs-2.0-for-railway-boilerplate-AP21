@@ -44,6 +44,23 @@ const medusaConfig = {
   },
   modules: [
     {
+      key: Modules.NOTIFICATION,
+      resolve: "@medusajs/notification",
+      options: {
+        providers: [
+          {
+            resolve: "@typed-dev/medusa-notification-resend",
+            id: "resend",
+            options: {
+              channels: ["email"],
+              api_key: process.env.RESEND_API_KEY,
+              from: process.env.RESEND_FROM_EMAIL,
+            },
+          },
+        ],
+      },
+    },
+    {
       key: Modules.FILE,
       resolve: "@medusajs/file",
       options: {
@@ -94,45 +111,6 @@ const medusaConfig = {
           },
         ]
       : []),
-    ...((SENDGRID_API_KEY && SENDGRID_FROM_EMAIL) ||
-    (RESEND_API_KEY && RESEND_FROM_EMAIL)
-      ? [
-          {
-            key: Modules.NOTIFICATION,
-            resolve: "@medusajs/notification",
-            options: {
-              providers: [
-                ...(SENDGRID_API_KEY && SENDGRID_FROM_EMAIL
-                  ? [
-                      {
-                        resolve: "@medusajs/notification-sendgrid",
-                        id: "sendgrid",
-                        options: {
-                          channels: ["email"],
-                          api_key: SENDGRID_API_KEY,
-                          from: SENDGRID_FROM_EMAIL,
-                        },
-                      },
-                    ]
-                  : []),
-                ...(RESEND_API_KEY && RESEND_FROM_EMAIL
-                  ? [
-                      {
-                        resolve: "./src/modules/email-notifications",
-                        id: "resend",
-                        options: {
-                          channels: ["email"],
-                          api_key: RESEND_API_KEY,
-                          from: RESEND_FROM_EMAIL,
-                        },
-                      },
-                    ]
-                  : []),
-              ],
-            },
-          },
-        ]
-      : []),
     ...(STRIPE_API_KEY && STRIPE_WEBHOOK_SECRET
       ? [
           {
@@ -155,6 +133,16 @@ const medusaConfig = {
       : []),
   ],
   plugins: [],
+  subscribers: [
+    {
+      name: "user-invite-handler",
+      path: "./src/subscribers/user-invite-handler",
+    },
+    {
+      name: "order-placed-handler",
+      path: "./src/subscribers/order-placed-handler",
+    },
+  ],
 };
 
 console.log(JSON.stringify(medusaConfig, null, 2));
