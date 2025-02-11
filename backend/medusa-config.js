@@ -1,18 +1,28 @@
-import dotenv from 'dotenv'
-import { defineConfig } from "@medusajs/utils"
+import { defineConfig, loadEnv, Modules } from "@medusajs/utils";
+import {
+  ADMIN_CORS,
+  AUTH_CORS,
+  BACKEND_URL,
+  COOKIE_SECRET,
+  DATABASE_URL,
+  JWT_SECRET,
+  MINIO_ACCESS_KEY,
+  MINIO_BUCKET,
+  MINIO_ENDPOINT,
+  MINIO_SECRET_KEY,
+  REDIS_URL,
+  RESEND_API_KEY,
+  RESEND_FROM_EMAIL,
+  SENDGRID_API_KEY,
+  SENDGRID_FROM_EMAIL,
+  SHOULD_DISABLE_ADMIN,
+  STORE_CORS,
+  STRIPE_API_KEY,
+  STRIPE_WEBHOOK_SECRET,
+  WORKER_MODE,
+} from "lib/constants";
 
-// Load environment variables
-dotenv.config()
-
-const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:9000"
-const ADMIN_CORS = process.env.ADMIN_CORS || "http://localhost:7000,http://localhost:7001"
-const STORE_CORS = process.env.STORE_CORS || "http://localhost:8000"
-const DATABASE_URL = process.env.DATABASE_URL
-const REDIS_URL = process.env.REDIS_URL
-const JWT_SECRET = process.env.JWT_SECRET
-const COOKIE_SECRET = process.env.COOKIE_SECRET
-const STRIPE_API_KEY = process.env.STRIPE_API_KEY
-const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET
+loadEnv(process.env.NODE_ENV, process.cwd());
 
 const medusaConfig = {
   projectConfig: {
@@ -84,7 +94,6 @@ const medusaConfig = {
           },
         ]
       : []),
-
     ...((SENDGRID_API_KEY && SENDGRID_FROM_EMAIL) ||
     (RESEND_API_KEY && RESEND_FROM_EMAIL)
       ? [
@@ -124,7 +133,6 @@ const medusaConfig = {
           },
         ]
       : []),
-
     ...(STRIPE_API_KEY && STRIPE_WEBHOOK_SECRET
       ? [
           {
