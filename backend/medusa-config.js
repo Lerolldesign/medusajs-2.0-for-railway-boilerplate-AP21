@@ -11,10 +11,6 @@ import {
   MINIO_ENDPOINT,
   MINIO_SECRET_KEY,
   REDIS_URL,
-  RESEND_API_KEY,
-  RESEND_FROM_EMAIL,
-  SENDGRID_API_KEY,
-  SENDGRID_FROM_EMAIL,
   SHOULD_DISABLE_ADMIN,
   STORE_CORS,
   STRIPE_API_KEY,
@@ -133,16 +129,6 @@ const medusaConfig = {
       : []),
   ],
   plugins: [],
-  subscribers: [
-    {
-      name: "user-invite-handler",
-      path: "./src/subscribers/user-invite-handler",
-    },
-    {
-      name: "order-placed-handler",
-      path: "./src/subscribers/order-placed-handler",
-    },
-  ],
 };
 
 console.log(JSON.stringify(medusaConfig, null, 2));
