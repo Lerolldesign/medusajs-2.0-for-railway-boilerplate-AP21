@@ -11,6 +11,10 @@ import {
   MINIO_ENDPOINT,
   MINIO_SECRET_KEY,
   REDIS_URL,
+  RESEND_API_KEY,
+  RESEND_FROM_EMAIL,
+  SENDGRID_API_KEY,
+  SENDGRID_FROM_EMAIL,
   SHOULD_DISABLE_ADMIN,
   STORE_CORS,
   STRIPE_API_KEY,
@@ -39,23 +43,6 @@ const medusaConfig = {
     disable: SHOULD_DISABLE_ADMIN,
   },
   modules: [
-    {
-      key: Modules.NOTIFICATION,
-      resolve: "@medusajs/notification",
-      options: {
-        providers: [
-          {
-            resolve: "@typed-dev/medusa-notification-resend",
-            id: "resend",
-            options: {
-              channels: ["email"],
-              api_key: process.env.RESEND_API_KEY,
-              from: process.env.RESEND_FROM_EMAIL,
-            },
-          },
-        ],
-      },
-    },
     {
       key: Modules.FILE,
       resolve: "@medusajs/file",
@@ -103,6 +90,28 @@ const medusaConfig = {
               redis: {
                 url: REDIS_URL,
               },
+            },
+          },
+        ]
+      : []),
+    ...((SENDGRID_API_KEY && SENDGRID_FROM_EMAIL) ||
+    (RESEND_API_KEY && RESEND_FROM_EMAIL)
+      ? [
+          {
+            key: Modules.NOTIFICATION,
+            resolve: "@medusajs/notification",
+            options: {
+              providers: [
+                {
+                  resolve: "@typed-dev/medusa-notification-resend",
+                  id: "resend",
+                  options: {
+                    channels: ["email"],
+                    api_key: process.env.RESEND_API_KEY,
+                    from: process.env.RESEND_FROM_EMAIL,
+                  },
+                },
+              ],
             },
           },
         ]
