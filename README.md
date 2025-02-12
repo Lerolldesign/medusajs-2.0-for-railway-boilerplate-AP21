@@ -101,3 +101,4 @@ Rename `.env.local.template` -> `.env.local`
 </p>
 
 https://github.com/rpuls/medusajs-2.0-for-railway-boilerplate/tree/master
+pnpm install --no-frozen-lockfile
