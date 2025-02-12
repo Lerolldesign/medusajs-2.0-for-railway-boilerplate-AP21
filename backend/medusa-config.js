@@ -6,15 +6,13 @@ import {
   COOKIE_SECRET,
   DATABASE_URL,
   JWT_SECRET,
+  MEILISEARCH_ADMIN_KEY,
+  MEILISEARCH_HOST,
   MINIO_ACCESS_KEY,
   MINIO_BUCKET,
   MINIO_ENDPOINT,
   MINIO_SECRET_KEY,
   REDIS_URL,
-  RESEND_API_KEY,
-  RESEND_FROM_EMAIL,
-  SENDGRID_API_KEY,
-  SENDGRID_FROM_EMAIL,
   SHOULD_DISABLE_ADMIN,
   STORE_CORS,
   STRIPE_API_KEY,
@@ -27,7 +25,7 @@ loadEnv(process.env.NODE_ENV, process.cwd());
 const medusaConfig = {
   projectConfig: {
     databaseUrl: DATABASE_URL,
-    databaseLogging: true,
+    databaseLogging: false,
     redisUrl: REDIS_URL,
     workerMode: WORKER_MODE,
     http: {
@@ -94,45 +92,7 @@ const medusaConfig = {
           },
         ]
       : []),
-    ...((SENDGRID_API_KEY && SENDGRID_FROM_EMAIL) ||
-    (RESEND_API_KEY && RESEND_FROM_EMAIL)
-      ? [
-          {
-            key: Modules.NOTIFICATION,
-            resolve: "@medusajs/notification",
-            options: {
-              providers: [
-                ...(SENDGRID_API_KEY && SENDGRID_FROM_EMAIL
-                  ? [
-                      {
-                        resolve: "@medusajs/notification-sendgrid",
-                        id: "sendgrid",
-                        options: {
-                          channels: ["email"],
-                          api_key: SENDGRID_API_KEY,
-                          from: SENDGRID_FROM_EMAIL,
-                        },
-                      },
-                    ]
-                  : []),
-                ...(RESEND_API_KEY && RESEND_FROM_EMAIL
-                  ? [
-                      {
-                        resolve: "./src/modules/email-notifications",
-                        id: "resend",
-                        options: {
-                          channels: ["email"],
-                          api_key: RESEND_API_KEY,
-                          from: RESEND_FROM_EMAIL,
-                        },
-                      },
-                    ]
-                  : []),
-              ],
-            },
-          },
-        ]
-      : []),
+
     ...(STRIPE_API_KEY && STRIPE_WEBHOOK_SECRET
       ? [
           {
@@ -154,7 +114,41 @@ const medusaConfig = {
         ]
       : []),
   ],
-  plugins: [],
+  plugins: [
+    ...(MEILISEARCH_HOST && MEILISEARCH_ADMIN_KEY
+      ? [
+          {
+            resolve: "@rokmohar/medusa-plugin-meilisearch",
+            options: {
+              config: {
+                host: MEILISEARCH_HOST,
+                apiKey: MEILISEARCH_ADMIN_KEY,
+              },
+              settings: {
+                products: {
+                  indexSettings: {
+                    searchableAttributes: [
+                      "title",
+                      "description",
+                      "variant_sku",
+                    ],
+                    displayedAttributes: [
+                      "id",
+                      "title",
+                      "description",
+                      "variant_sku",
+                      "thumbnail",
+                      "handle",
+                    ],
+                  },
+                  primaryKey: "id",
+                },
+              },
+            },
+          },
+        ]
+      : []),
+  ],
 };
 
 console.log(JSON.stringify(medusaConfig, null, 2));
